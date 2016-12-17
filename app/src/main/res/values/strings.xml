@@ -2,5 +2,5 @@
     <string name="app_name">RootBoot</string>
     <string name="reboot">Reboot Phone</string>
     <string name="shutdown">Shutdown Phone</string>
-    <string name="ping">Ping</string>
+    <string name="rebootrecovery">Reboot Recovery</string>
 </resources>

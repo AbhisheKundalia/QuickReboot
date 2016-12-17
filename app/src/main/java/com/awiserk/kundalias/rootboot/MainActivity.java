@@ -3,21 +3,19 @@ package com.awiserk.kundalias.rootboot;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button reboot, shutdown, ping;
+    Button reboot, shutdown, rebootRecovery;
     boolean suAvailable = false;
 
     @Override
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //assing Buttons from XML
         reboot = (Button) findViewById(R.id.reboot);
         shutdown = (Button) findViewById(R.id.shutdown);
-        ping = (Button) findViewById(R.id.ping);
+        rebootRecovery = (Button) findViewById(R.id.rebootrecovery);
 
         suAvailable = Shell.SU.available();
         if (suAvailable) {
@@ -67,16 +65,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            ping.setOnClickListener(new View.OnClickListener() {
+            rebootRecovery.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(view.getContext())
-                            .setMessage("Are you sure you want to " + getText(R.string.ping) + " ?")
+                            .setMessage("Are you sure you want to " + getText(R.string.rebootrecovery) + " ?")
                             .setCancelable(false)
-                            .setPositiveButton(R.string.ping, new DialogInterface.OnClickListener() {
+                            .setPositiveButton(R.string.rebootrecovery, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    new RootBoot(MainActivity.this).execute("ping");
+                                    new RootBoot(MainActivity.this).execute("rebootrecovery");
                                 }
                             })
                             .setNegativeButton("Cancel", null)
@@ -85,11 +83,27 @@ public class MainActivity extends AppCompatActivity {
             });
         } else {
             Toast.makeText(MainActivity.this, "Phone not Rooted!", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(this)
+                    .setMessage("Your application does not have root access. So now the application will Quit!").setCancelable(false)
+                    .setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.this.finish();
+                        }
+                    }).setNegativeButton("Restart App", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    MainActivity.this.finish();
+                    Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                }
+            }).show();
         }
 
     }
 
-    public class RootBoot extends AsyncTask<String, Void, String> {
+    public class RootBoot extends AsyncTask<String, Void, Void> {
         Context context = null;
 
         public RootBoot(Context context) {
@@ -102,42 +116,48 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String params) {
-            if (params == null) {
-                Toast.makeText(context, "Null returned", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(context, params, Toast.LENGTH_LONG).show();
-            }
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
         }
 
         @Override
-        protected String doInBackground(String... params) {
+        protected Void doInBackground(String... params) {
             String result = null;
             switch (params[0]) {
                 case "reboot":
-                    Shell.SU.run("reboot");
-                    result = null;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MainActivity.this.finish();
+                        }
+                    });
+                    Shell.SU.run("sleep 2 && reboot");
                     break;
 
                 case "shutdown":
-                    Shell.SU.run("reboot -p");
-                    result = null;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MainActivity.this.finish();
+                        }
+                    });
+                    Shell.SU.run("sleep 2 && reboot -p");
                     break;
 
-                case "ping":
-                    List<String> suResult;
-
-                    if (suAvailable) {
-                        suResult = Shell.SU.run(new String[]{"su; "});
-                        Log.i("sysUI: ", suResult.toString());
-                        result = suResult.toString();
-                    }
+                case "rebootrecovery":
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MainActivity.this.finish();
+                        }
+                    });
+                    Shell.SU.run("sleep 2 && reboot recovery");
                     break;
 
                 default:
                     break;
             }
-            return result;
+            return null;
         }
     }
 }

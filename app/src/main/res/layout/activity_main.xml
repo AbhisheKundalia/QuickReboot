@@ -24,8 +24,8 @@
         android:text="@string/shutdown" />
 
     <Button
-        android:id="@+id/ping"
+        android:id="@+id/rebootrecovery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ping" />
+        android:text="@string/rebootrecovery" />
 </LinearLayout>
