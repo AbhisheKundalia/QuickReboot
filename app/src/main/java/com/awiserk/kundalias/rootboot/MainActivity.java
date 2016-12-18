@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import eu.chainfire.libsuperuser.Shell;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
         reboot = (Button) findViewById(R.id.reboot);
         shutdown = (Button) findViewById(R.id.shutdown);
         rebootRecovery = (Button) findViewById(R.id.rebootrecovery);
+
+        // Add data to a list
+        ArrayList<ButtonData> buttonDatas = new ArrayList<ButtonData>();
+        buttonDatas.add(new ButtonData(R.drawable.ic_power_settings_new_black_24dp, R.string.shutdown, R.string.shutdowndesc));
+        buttonDatas.add(new ButtonData(R.drawable.ic_rotate_right_black_24dp, R.string.reboot, R.string.rebootdesc));
+        buttonDatas.add(new ButtonData(R.drawable.ic_sync_problem_black_24dp, R.string.rebootrecovery, R.string.rebootrecdesc));
 
         suAvailable = Shell.SU.available();
         if (suAvailable) {

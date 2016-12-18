@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">RootBoot</string>
     <string name="reboot">Reboot Phone</string>
+    <string name="rebootdesc">Restarts the device</string>
     <string name="shutdown">Shutdown Phone</string>
+    <string name="shutdowndesc">Turn Off the device</string>
     <string name="rebootrecovery">Reboot Recovery</string>
+    <string name="rebootrecdesc">Restarts the device in Recovery mode</string>
+    <string name="icondesc">Icon for Event</string>
 </resources>

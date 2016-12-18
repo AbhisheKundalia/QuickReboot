@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/two_line_item"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:layout_centerVertical="true"
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:minHeight="72dp"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp">
+
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="72dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="false"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:adjustViewBounds="false"
+        android:contentDescription="@string/icondesc"
+        android:cropToPadding="false"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_power_settings_new_black_24dp" />
+
+    <LinearLayout
+        android:id="@+id/lines_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignWithParentIfMissing="false"
+        android:orientation="vertical"
+        android:paddingLeft="72dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/first_text_view"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha=".87"
+            android:contentDescription="@string/shutdown"
+            android:maxLines="1"
+            android:textSize="16sp"
+            tools:text="@string/shutdown" />
+
+        <TextView
+            android:id="@+id/second_text_view"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".54"
+            android:maxLines="1"
+            android:textSize="14sp"
+            tools:text="@string/shutdowndesc" />
+    </LinearLayout>
+
+</RelativeLayout>
