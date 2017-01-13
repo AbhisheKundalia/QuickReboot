@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RootBoot</string>
+    <string name="app_name">Quick Reboot</string>
     <string name="reboot">Reboot Phone</string>
     <string name="rebootdesc">Restarts the device</string>
     <string name="shutdown">Shutdown Phone</string>

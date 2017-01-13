@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                             MainActivity.this.finish();
                         }
                     });
-                    Shell.SU.run("sleep 2 && reboot");
+                    Shell.SU.run("sleep 1 && reboot");
                     break;
 
                 case "Shutdown Phone":
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                             MainActivity.this.finish();
                         }
                     });
-                    Shell.SU.run("sleep 2 && reboot -p");
+                    Shell.SU.run("sleep 1 && reboot -p");
                     break;
 
                 case "Reboot Recovery":
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                             MainActivity.this.finish();
                         }
                     });
-                    Shell.SU.run("sleep 2 && reboot recovery");
+                    Shell.SU.run("sleep 1 && reboot recovery");
                     break;
 
                 default:
