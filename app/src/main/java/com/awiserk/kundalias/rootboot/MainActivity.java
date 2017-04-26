@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,6 +26,7 @@ import eu.chainfire.libsuperuser.Shell;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String BACKGROUND_THREAD = "BackgroundThread";
     private static final String SHUTDOWN = "reboot -p";
     private static final String REBOOT_CMD = "reboot";
     private static final String REBOOT_QUICK_REBOOT_CMD = "setprop ctl.restart zygote";
@@ -58,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.button_list);
+
+        HandlerThread mHandlerThread = new HandlerThread(BACKGROUND_THREAD);
+        mHandlerThread.start();
+        mHandler = new Handler(mHandlerThread.getLooper());
 
         // Add data to a list
         final ArrayList<ButtonData> buttonDatas = new ArrayList<ButtonData>();
@@ -235,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case "Reboot Bootloader":
                     closeCurrentActivity();
-                    runCmd(0, REBOOT_BOOTLOADER_CMD);
+                    runCmd(RUNNABLE_DELAY_MS, REBOOT_BOOTLOADER_CMD);
                     break;
 
                 case "Rate Us":
