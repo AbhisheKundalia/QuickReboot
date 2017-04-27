@@ -2,202 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\6c9c0cb112edfceba20259710dd815bcb0b7d10c\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="fd803f43eddf560e5025b129cea5abcad1096022">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_238e6de89e073f3a09aee7efdbb151c0410b29c4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\a64ad084a0682d117a3df63020600c20b255f740\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_8815c1234d508cb8be0ac7aef1613b4def6a1e25.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_4587515df70b11ae990e217c69c9b3a61733a049.jar" />
-    </item>
-    <item
         is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\a64ad084a0682d117a3df63020600c20b255f740\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8815c1234d508cb8be0ac7aef1613b4def6a1e25\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\fee44c8a12d53d94793ee48b4120a32dbbd6f045\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d0d60b533042a0ae55bf08d954ef30399542b406\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\3f57d086c2c327caa632fad7d0aee2236d11d415\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_99c01555355f8737b5b09591575ad4c4a5d513ca\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\fee44c8a12d53d94793ee48b4120a32dbbd6f045\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_d0d60b533042a0ae55bf08d954ef30399542b406.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\bd19cad854eb626e3525ed4d43ced389905a338d\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_45632d0e8f6e13b6ab26d67745c67b2ac1ad3c85.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\GitHub\QuickReboot\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_3d3ad91e73b7ebace0557dd012efc0e73f1a702f\classes.dex" />
+        <dex dex="C:\GitHub\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_1d2232884c906490e114a5652eafbea276cc116b\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\bd19cad854eb626e3525ed4d43ced389905a338d\output\jars\classes.jar"
+        jar="C:\GitHub\QuickReboot\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_45632d0e8f6e13b6ab26d67745c67b2ac1ad3c85\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\0b21a14d9762db7efef94e62ad057e7b7cc4ea4c\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_7bd033bde84d2eae1bab9444d36dabf13e3aaf8c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\3f57d086c2c327caa632fad7d0aee2236d11d415\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_99c01555355f8737b5b09591575ad4c4a5d513ca.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\0b21a14d9762db7efef94e62ad057e7b7cc4ea4c\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7bd033bde84d2eae1bab9444d36dabf13e3aaf8c\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\1480dcef513571b4450698d973c334fbb7f9f2b4\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_1ecfc03b0dacaee12e087ffc09dc6978bfeb19d3.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\1480dcef513571b4450698d973c334fbb7f9f2b4\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1ecfc03b0dacaee12e087ffc09dc6978bfeb19d3\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\c3c84357c7ca60aabc30f17896d2e56e066f4710\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_2a84f2d447bdac93a4d21ec40c59ce4530acd741.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\c3c84357c7ca60aabc30f17896d2e56e066f4710\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2a84f2d447bdac93a4d21ec40c59ce4530acd741\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\506dc8569c26a254bb49f890f1e1debc4bff8e4f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_65354ea58a23b1710a67f8620eb4fcc29e6b67e4.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\506dc8569c26a254bb49f890f1e1debc4bff8e4f\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_65354ea58a23b1710a67f8620eb4fcc29e6b67e4\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\55c544ec4a5eac37aab4abe8e9d9bfcb76a2c374\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\pre-dexed\debug\classes_01764782c15c7dd42571ae712d26f30ce6661e6c.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Abhishek Jain\.android\build-cache\55c544ec4a5eac37aab4abe8e9d9bfcb76a2c374\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_01764782c15c7dd42571ae712d26f30ce6661e6c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="9255d8a7f4f7217317e01e5128d0801ba6e939c5">
-        <dex dex="D:\Awiserk\android Udacity\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8b02960e15b6f5f691ec15a2913325a4306f1c85\classes.dex" />
+        sha1="8ea33efedf1157a6c331cc73f74c3e578ef0e490">
+        <dex dex="C:\GitHub\QuickReboot\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_dda57b367c3ff98ba3aa765b134d2c6c4114c178\classes.dex" />
     </item>
 
 </items>
