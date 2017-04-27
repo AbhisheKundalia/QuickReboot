@@ -7,11 +7,11 @@
     <string name="rebootrecovery">Reboot Recovery</string>
     <string name="rebootrecdesc">Restarts the device in Recovery mode</string>
     <string name="quickreboot">Quick Reboot</string>
-    <string name="quickrebootdesc">Restarts applications and UI without touching low-level system</string>
+    <string name="quickrebootdesc">Restarts applications, processes and UI </string>
     <string name="rebootbootloader">Reboot Bootloader</string>
     <string name="rebootbootloaderdesc">Restarts the device to Bootloader</string>
     <string name="safemode">Reboot in Safe Mode</string>
-    <string name="safemodedesc">Restarts in safe mode, all the user apps will be temporarily disabled</string>
+    <string name="safemodedesc">All the user apps will be temporarily disabled</string>
     <string name="rateus">Rate Us</string>
     <string name="rateusdesc">Do you like me?</string>
     <string name="icondesc">Icon for Event</string>

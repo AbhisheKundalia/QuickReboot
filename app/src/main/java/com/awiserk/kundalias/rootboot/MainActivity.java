@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             = new String[]{"setprop persist.sys.safemode 1", REBOOT_QUICK_REBOOT_CMD};
     private static final String PLAY_STORE_RATE_US
             = "https://play.google.com/store/apps/details?id=com.awiserk.kundalias.rootboot";
-    private static final int RUNNABLE_DELAY_MS = 1000;
+    private static final int RUNNABLE_DELAY_MS = 700;
     private static boolean suAvailable = false;
     private Handler mHandler;
 
@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                //Toast.makeText(MainActivity.this, cmd.toString(), Toast.LENGTH_SHORT).show();
                 Shell.SU.run(cmd);
                 mHandler.removeCallbacks(this);
             }
@@ -213,12 +214,12 @@ public class MainActivity extends AppCompatActivity {
             switch (params[0]) {
                 case "Shutdown Phone":
                     closeCurrentActivity();
-                    runCmd(0, SHUTDOWN);
+                    runCmd(RUNNABLE_DELAY_MS, SHUTDOWN);
                     break;
 
                 case "Reboot Phone":
                     closeCurrentActivity();
-                    runCmd(0, REBOOT_CMD);
+                    runCmd(RUNNABLE_DELAY_MS, REBOOT_CMD);
                     break;
 
                 case "Quick Reboot":

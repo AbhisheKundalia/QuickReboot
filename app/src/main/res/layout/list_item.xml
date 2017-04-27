@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
+    android:layout_height="wrap_content"
     android:background="?selectableItemBackground"
     android:clickable="false"
     android:minHeight="72dp"
@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingRight="16dp"
@@ -41,9 +41,9 @@
             android:id="@+id/description"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:alpha=".54"
-            android:maxLines="1"
+            android:layout_weight="1"
             android:textSize="14sp"
             tools:text="@string/shutdowndesc" />
     </LinearLayout>
