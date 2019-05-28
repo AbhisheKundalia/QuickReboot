@@ -31,18 +31,19 @@ public class ListViewAdapter extends ArrayAdapter<ButtonData> {
         //Get the current button data
         ButtonData currentButtonData = getItem(position);
 
-        //Find the ImageView from list_item.xml and assign current button data to it
-        ImageView buttonImage = (ImageView) listItemView.findViewById(R.id.image_icon);
-        buttonImage.setImageResource(currentButtonData.getImageResourceID());
+        if (currentButtonData != null) {
+            //Find the ImageView from list_item.xml and assign current button data to it
+            ImageView buttonImage = listItemView.findViewById(R.id.image_icon);
+            buttonImage.setImageResource(currentButtonData.getImageResourceID());
 
-        //Find the Title View from listitem.xml and assign the current button data title to it
-        TextView title = (TextView) listItemView.findViewById(R.id.title);
-        title.setText(currentButtonData.getTitleID());
+            //Find the Title View from listitem.xml and assign the current button data title to it
+            TextView title = listItemView.findViewById(R.id.title);
+            title.setText(currentButtonData.getTitleID());
 
-        //Find the Description View from the listitem.xml and assign the current button data desc to it
-        TextView description = (TextView) listItemView.findViewById(R.id.description);
-        description.setText(currentButtonData.getDescriptionID());
-
+            //Find the Description View from the listitem.xml and assign the current button data desc to it
+            TextView description = listItemView.findViewById(R.id.description);
+            description.setText(currentButtonData.getDescriptionID());
+        }
 
         // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
         // the ListView.

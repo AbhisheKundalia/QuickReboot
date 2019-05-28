@@ -14,5 +14,7 @@
     <string name="safemodedesc">All the user apps will be temporarily disabled</string>
     <string name="rateus">Rate Us</string>
     <string name="rateusdesc">Do you like me?</string>
+    <string name="donateus">Donate Us</string>
+    <string name="donateusdesc">Help us grow :)</string>
     <string name="icondesc">Icon for Event</string>
 </resources>

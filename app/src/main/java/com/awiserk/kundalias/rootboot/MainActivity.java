@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDatas.add(new ButtonData(R.drawable.ic_reboot_recovery_black_48dp, R.string.rebootrecovery, R.string.rebootrecdesc));
         buttonDatas.add(new ButtonData(R.drawable.ic_bootloader_black_48dp, R.string.rebootbootloader, R.string.rebootbootloaderdesc));
         buttonDatas.add(new ButtonData(R.drawable.ic_grade_black_24dp, R.string.rateus, R.string.rateusdesc));
+        buttonDatas.add(new ButtonData(R.drawable.ic_grade_black_24dp, R.string.donateus, R.string.donateusdesc));
 
 
         //Call listViewAdapter and set values of the arraylist in the list view
