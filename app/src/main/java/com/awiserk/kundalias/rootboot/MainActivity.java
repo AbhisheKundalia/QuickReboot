@@ -16,16 +16,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String RATE_US = "Rate Us";
+    public static final String DONATE_US = "Donate Us";
+    public static final String REBOOT_BOOTLOADER = "Reboot Bootloader";
+    public static final String REBOOT_RECOVERY = "Reboot Recovery";
+    public static final String REBOOT_IN_SAFE_MODE = "Reboot in Safe Mode";
+    public static final String QUICK_REBOOT = "Quick Reboot";
+    public static final String REBOOT_PHONE = "Reboot Phone";
+    public static final String SHUTDOWN_PHONE = "Shutdown Phone";
     private static final String BACKGROUND_THREAD = "BackgroundThread";
     private static final String SHUTDOWN = "reboot -p";
     private static final String REBOOT_CMD = "reboot";
@@ -75,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
         buttonDatas.add(new ButtonData(R.drawable.ic_reboot_recovery_black_48dp, R.string.rebootrecovery, R.string.rebootrecdesc));
         buttonDatas.add(new ButtonData(R.drawable.ic_bootloader_black_48dp, R.string.rebootbootloader, R.string.rebootbootloaderdesc));
         buttonDatas.add(new ButtonData(R.drawable.ic_grade_black_24dp, R.string.rateus, R.string.rateusdesc));
-        buttonDatas.add(new ButtonData(R.drawable.ic_grade_black_24dp, R.string.donateus, R.string.donateusdesc));
+        buttonDatas.add(new ButtonData(R.drawable.outline_tag_faces_black_48, R.string.donateus, R.string.donateusdesc));
 
 
         //Call listViewAdapter and set values of the arraylist in the list view
         ListViewAdapter listViewAdapter = new ListViewAdapter(this, buttonDatas);
 
         //Create a Listview object pointing to Button_List.xml
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = findViewById(R.id.list);
 
         //Set adapter to the listview
         listView.setAdapter(listViewAdapter);
@@ -90,23 +98,31 @@ public class MainActivity extends AppCompatActivity {
         //Check if Root access is available or not
         suAvailable = Shell.SU.available();
         if (suAvailable) {
+            // List to avoid confirmation dialogue box
+            final List<String> skipDialogueList = new ArrayList<>();
+            skipDialogueList.add(RATE_US);
+            skipDialogueList.add(DONATE_US);
             //Assigning listener to each Button
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Log.i("Clicked", " button clicked");
                     final String itemTitle = getText(buttonDatas.get(position).getTitleID()).toString();
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setMessage("Are you sure you want to " + itemTitle + " ?")
-                            .setCancelable(false)
-                            .setPositiveButton(itemTitle, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    new RootBoot(MainActivity.this).execute(itemTitle);
-                                }
-                            })
-                            .setNegativeButton("Cancel", null)
-                            .show();
+                    if (skipDialogueList.contains(itemTitle)) {
+                        new RootBoot(MainActivity.this).execute(itemTitle);
+                    } else {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("Are you sure you want to " + itemTitle + " ?")
+                                .setCancelable(false)
+                                .setPositiveButton(itemTitle, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        new RootBoot(MainActivity.this).execute(itemTitle);
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null)
+                                .show();
+                    }
                 }
             });
         } else {
@@ -145,8 +161,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Closes current app and thus provides user friendly interface
      */
-    private void closeCurrentActivity()
-    {
+    private void closeCurrentActivity() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -156,34 +171,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-* Start with rating the app
-* Determine if the Play Store is installed on the device
-*
-* */
-    public void rateApp()
-    {
-        try
-        {
+     * Start with rating the app
+     * Determine if the Play Store is installed on the device
+     *
+     * */
+    public void rateApp() {
+        try {
             Intent rateIntent = rateIntentForUrl("market://details");
             startActivity(rateIntent);
-        }
-        catch (ActivityNotFoundException e)
-        {
+        } catch (ActivityNotFoundException e) {
             Intent rateIntent = rateIntentForUrl("https://play.google.com/store/apps/details");
             startActivity(rateIntent);
         }
     }
 
-    private Intent rateIntentForUrl(String url)
-    {
+    public void donateUs() {
+        Intent rateIntent = rateIntentForUrl("https://www.paypal.me/awiserk/5.00USD");
+        startActivity(rateIntent);
+    }
+
+    private Intent rateIntentForUrl(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("%s?id=%s", url, getPackageName())));
         int flags = Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_MULTIPLE_TASK;
-        if (Build.VERSION.SDK_INT >= 21)
-        {
+        if (Build.VERSION.SDK_INT >= 21) {
             flags |= Intent.FLAG_ACTIVITY_NEW_DOCUMENT;
-        }
-        else
-        {
+        } else {
             //noinspection deprecation
             flags |= Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET;
         }
@@ -193,9 +205,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Async task for executing operation in background thread
     public class RootBoot extends AsyncTask<String, Void, Void> {
-        Context context = null;
+        Context context;
 
-        public RootBoot(Context context) {
+        RootBoot(Context context) {
             this.context = context;
         }
 
@@ -211,43 +223,46 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(String... params) {
-            String result = null;
             switch (params[0]) {
-                case "Shutdown Phone":
+                case SHUTDOWN_PHONE:
                     closeCurrentActivity();
                     runCmd(RUNNABLE_DELAY_MS, SHUTDOWN);
                     break;
 
-                case "Reboot Phone":
+                case REBOOT_PHONE:
                     closeCurrentActivity();
                     runCmd(RUNNABLE_DELAY_MS, REBOOT_CMD);
                     break;
 
-                case "Quick Reboot":
+                case QUICK_REBOOT:
                     closeCurrentActivity();
                     runCmd(0, SHUTDOWN_BROADCAST());
                     runCmd(RUNNABLE_DELAY_MS, REBOOT_QUICK_REBOOT_CMD);
                     break;
 
-                case "Reboot in Safe Mode":
+                case REBOOT_IN_SAFE_MODE:
                     closeCurrentActivity();
                     runCmd(0, SHUTDOWN_BROADCAST());
                     runCmd(RUNNABLE_DELAY_MS, REBOOT_SAFE_MODE);
                     break;
 
-                case "Reboot Recovery":
+                case REBOOT_RECOVERY:
                     closeCurrentActivity();
                     runCmd(0, SHUTDOWN_BROADCAST());
                     runCmd(RUNNABLE_DELAY_MS, REBOOT_RECOVERY_CMD);
                     break;
 
-                case "Reboot Bootloader":
+                case REBOOT_BOOTLOADER:
                     closeCurrentActivity();
                     runCmd(RUNNABLE_DELAY_MS, REBOOT_BOOTLOADER_CMD);
                     break;
 
-                case "Rate Us":
+                case RATE_US:
                     rateApp();
+                    break;
+
+                case DONATE_US:
+                    donateUs();
                     break;
 
                 default:
