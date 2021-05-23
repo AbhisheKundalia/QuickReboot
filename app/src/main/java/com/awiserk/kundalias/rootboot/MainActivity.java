@@ -3,7 +3,6 @@ package com.awiserk.kundalias.rootboot;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -11,11 +10,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,10 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String REBOOT_BOOTLOADER_CMD = "reboot bootloader";
     private static final String[] REBOOT_SAFE_MODE
             = new String[]{"setprop persist.sys.safemode 1", REBOOT_QUICK_REBOOT_CMD};
-    private static final String PLAY_STORE_RATE_US
-            = "https://play.google.com/store/apps/details?id=com.awiserk.kundalias.rootboot";
     private static final int RUNNABLE_DELAY_MS = 700;
-    private static boolean suAvailable = false;
     private Handler mHandler;
 
     // just for safe measure, we don't want any data corruption, right?
@@ -74,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mHandler = new Handler(mHandlerThread.getLooper());
 
         // Add data to a list
-        final ArrayList<ButtonData> buttonDatas = new ArrayList<ButtonData>();
+        final ArrayList<ButtonData> buttonDatas = new ArrayList<>();
 
         buttonDatas.add(new ButtonData(R.drawable.ic_shutdown_new_black_48dp, R.string.shutdown, R.string.shutdowndesc));
         buttonDatas.add(new ButtonData(R.drawable.ic_reboot_phone_black_48dp, R.string.reboot, R.string.rebootdesc));
@@ -96,33 +90,25 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(listViewAdapter);
 
         //Check if Root access is available or not
-        suAvailable = Shell.SU.available();
+        boolean suAvailable = Shell.SU.available();
         if (suAvailable) {
             // List to avoid confirmation dialogue box
             final List<String> skipDialogueList = new ArrayList<>();
             skipDialogueList.add(RATE_US);
             skipDialogueList.add(DONATE_US);
             //Assigning listener to each Button
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Log.i("Clicked", " button clicked");
-                    final String itemTitle = getText(buttonDatas.get(position).getTitleID()).toString();
-                    if (skipDialogueList.contains(itemTitle)) {
-                        new RootBoot(MainActivity.this).execute(itemTitle);
-                    } else {
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setMessage("Are you sure you want to " + itemTitle + " ?")
-                                .setCancelable(false)
-                                .setPositiveButton(itemTitle, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        new RootBoot(MainActivity.this).execute(itemTitle);
-                                    }
-                                })
-                                .setNegativeButton("Cancel", null)
-                                .show();
-                    }
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                Log.i("Clicked", " button clicked");
+                final String itemTitle = getText(buttonDatas.get(position).getTitleID()).toString();
+                if (skipDialogueList.contains(itemTitle)) {
+                    new RootBoot(MainActivity.this).execute(itemTitle);
+                } else {
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setMessage("Are you sure you want to " + itemTitle + " ?")
+                            .setCancelable(false)
+                            .setPositiveButton(itemTitle, (dialog, which) -> new RootBoot(MainActivity.this).execute(itemTitle))
+                            .setNegativeButton("Cancel", null)
+                            .show();
                 }
             });
         } else {
@@ -130,19 +116,11 @@ public class MainActivity extends AppCompatActivity {
             //Alert user with dialog to provide permission or quit app
             new AlertDialog.Builder(this)
                     .setMessage("Your application does not have root access. So now the application will Quit!").setCancelable(false)
-                    .setPositiveButton("Quit", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.this.finish();
-                        }
-                    }).setNegativeButton("Restart App", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    MainActivity.this.finish();
-                    Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
-                }
+                    .setPositiveButton("Quit", (dialog, which) -> MainActivity.this.finish()).setNegativeButton("Restart App", (dialog, which) -> {
+                MainActivity.this.finish();
+                Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
             }).show();
         }
     }
@@ -186,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void donateUs() {
-        Intent rateIntent = rateIntentForUrl("https://www.paypal.me/awiserk/5.00USD");
+        Intent rateIntent = rateIntentForUrl("https://www.buymeacoffee.com/awiserk");
         startActivity(rateIntent);
     }
 
